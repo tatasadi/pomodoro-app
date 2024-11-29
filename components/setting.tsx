@@ -13,9 +13,10 @@ import { kumbhSans, robotoSlab, spaceMono } from '@/app/font'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { useSetting } from '@/app/setting-context'
+import CheckIcon from './icons/check-icon'
 
 export default function Setting() {
-	const { font, setFont } = useSetting()
+	const { font, setFont, color, setColor } = useSetting()
 
 	return (
 		<Dialog>
@@ -60,8 +61,32 @@ export default function Setting() {
 								</Button>
 							</div>
 						</div>
-						<div>
+						<div className="flex flex-col gap-4 sm:flex-row sm:justify-between items-center">
 							<h3>COLOR</h3>
+							<div className="flex gap-4 justify-center">
+								<Button
+									variant="fontButton"
+									className={cn('bg-light-red')}
+									onClick={() => setColor('red')}
+								>
+									{color === 'red' && <span className="sr-only">Selected</span> && <CheckIcon />}
+								</Button>
+
+								<Button
+									variant="fontButton"
+									className={cn('bg-light-cyan')}
+									onClick={() => setColor('cyan')}
+								>
+									{color === 'cyan' && <span className="sr-only">Selected</span> && <CheckIcon />}
+								</Button>
+								<Button
+									variant="fontButton"
+									className={cn('bg-light-purple')}
+									onClick={() => setColor('purple')}
+								>
+									{color === 'purple' && <span className="sr-only">Selected</span> && <CheckIcon />}
+								</Button>
+							</div>
 						</div>
 					</div>
 				</DialogHeader>
