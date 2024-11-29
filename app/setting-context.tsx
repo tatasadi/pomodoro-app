@@ -8,6 +8,10 @@ interface SettingContextType {
 	setFont: React.Dispatch<React.SetStateAction<string>>
 	color: string
 	setColor: React.Dispatch<React.SetStateAction<string>>
+	times: { pomodoro: number; shortBreak: number; longBreak: number }
+	setTimes: React.Dispatch<
+		React.SetStateAction<{ pomodoro: number; shortBreak: number; longBreak: number }>
+	>
 }
 
 const SettingContext = createContext<SettingContextType | undefined>(undefined)
@@ -15,6 +19,7 @@ const SettingContext = createContext<SettingContextType | undefined>(undefined)
 export const SettingContextProvider = ({ children }: { children: React.ReactNode }) => {
 	const [font, setFont] = useState('kumbhSans')
 	const [color, setColor] = useState('red')
+	const [times, setTimes] = useState({ pomodoro: 25, shortBreak: 5, longBreak: 15 })
 
 	const fontClasses = useMemo(
 		() => ({
@@ -31,7 +36,7 @@ export const SettingContextProvider = ({ children }: { children: React.ReactNode
 	}, [font, fontClasses])
 
 	return (
-		<SettingContext.Provider value={{ font, setFont, color, setColor }}>
+		<SettingContext.Provider value={{ font, setFont, color, setColor, times, setTimes }}>
 			{children}
 		</SettingContext.Provider>
 	)

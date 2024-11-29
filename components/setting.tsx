@@ -14,9 +14,10 @@ import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { useSetting } from '@/app/setting-context'
 import CheckIcon from './icons/check-icon'
+import NumberInput from './number-input'
 
 export default function Setting() {
-	const { font, setFont, color, setColor } = useSetting()
+	const { font, setFont, color, setColor, times, setTimes } = useSetting()
 
 	return (
 		<Dialog>
@@ -26,10 +27,25 @@ export default function Setting() {
 			<DialogContent>
 				<DialogHeader>
 					<DialogTitle className="text-left text-[1.75rem] font-bold">Setting</DialogTitle>
+					<DialogDescription className="sr-only">Setting for pomodoro timer</DialogDescription>
 					<div className="h-[1px] w-full bg-[#E3E1E1]"></div>
 					<div className="[&>div>h3]:text-[0.6875rem] font-bold [&>div>h3]:tracking-[0.26444rem] text-dark px-6 sm:[&>div>h3]:text-[0.8125rem] [&>div]:py-6">
 						<div>
 							<h3>TIME (MINUTES)</h3>
+							<div className="grid gap-2 mt-5 sm:grid-cols-3 sm:gap-5">
+								<NumberInput label="pomodoro" name="pomodoro" defaultValue={times.pomodoro} />
+								<NumberInput
+									label="short break"
+									name="shortBreak"
+									defaultValue={times.shortBreak}
+								/>
+								<NumberInput
+									label="long break"
+									name="longBreak"
+									defaultValue={times.longBreak}
+									handleUpdate={newValue => setTimes(t => ({ ...t, longBreak: newValue }))}
+								/>
+							</div>
 						</div>
 						<div className="border-y flex flex-col gap-4 sm:flex-row sm:justify-between items-center">
 							<h3>FONT</h3>
