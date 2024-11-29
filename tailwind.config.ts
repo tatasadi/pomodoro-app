@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import { kumbhSans } from './app/font'
 
 export default {
 	darkMode: ['class'],

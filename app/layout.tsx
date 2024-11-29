@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import { SettingContextProvider } from './setting-context'
 
 export const metadata: Metadata = {
 	title: 'Create Next App',
@@ -12,8 +13,10 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang="en">
-			<body className={`antialiased`}>{children}</body>
-		</html>
+		<SettingContextProvider>
+			<html lang="en">
+				<body className={`antialiased`}>{children}</body>
+			</html>
+		</SettingContextProvider>
 	)
 }
