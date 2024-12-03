@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useEffect, useMemo, useState } from 'react'
+import React, { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import { kumbhSans, robotoSlab, spaceMono } from './font'
 
 interface SettingContextType {
@@ -34,6 +34,13 @@ export const SettingContextProvider = ({ children }: { children: React.ReactNode
 		document.body.classList.remove(...Object.values(fontClasses))
 		document.body.classList.add(fontClasses[font as keyof typeof fontClasses])
 	}, [font, fontClasses])
+
+	useEffect(() => {
+		document.documentElement.style.setProperty(
+			'--selected-color',
+			color === 'red' ? '#F87070' : color === 'cyan' ? '#70F3F8' : '#D881F8',
+		)
+	}, [color])
 
 	return (
 		<SettingContext.Provider value={{ font, setFont, color, setColor, times, setTimes }}>
