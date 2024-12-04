@@ -6,8 +6,6 @@ import { kumbhSans, robotoSlab, spaceMono } from './font'
 interface SettingContextType {
 	font: string
 	setFont: React.Dispatch<React.SetStateAction<string>>
-	color: string
-	setColor: React.Dispatch<React.SetStateAction<string>>
 	times: { pomodoro: number; shortBreak: number; longBreak: number }
 	setTimes: React.Dispatch<
 		React.SetStateAction<{ pomodoro: number; shortBreak: number; longBreak: number }>
@@ -18,7 +16,6 @@ const SettingContext = createContext<SettingContextType | undefined>(undefined)
 
 export const SettingContextProvider = ({ children }: { children: React.ReactNode }) => {
 	const [font, setFont] = useState('kumbhSans')
-	const [color, setColor] = useState('red')
 	const [times, setTimes] = useState({ pomodoro: 25, shortBreak: 5, longBreak: 15 })
 
 	const fontClasses = useMemo(
@@ -35,15 +32,8 @@ export const SettingContextProvider = ({ children }: { children: React.ReactNode
 		document.body.classList.add(fontClasses[font as keyof typeof fontClasses])
 	}, [font, fontClasses])
 
-	useEffect(() => {
-		document.documentElement.style.setProperty(
-			'--selected-color',
-			color === 'red' ? '#F87070' : color === 'cyan' ? '#70F3F8' : '#D881F8',
-		)
-	}, [color])
-
 	return (
-		<SettingContext.Provider value={{ font, setFont, color, setColor, times, setTimes }}>
+		<SettingContext.Provider value={{ font, setFont, times, setTimes }}>
 			{children}
 		</SettingContext.Provider>
 	)

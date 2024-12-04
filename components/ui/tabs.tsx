@@ -4,8 +4,6 @@ import * as React from 'react'
 import * as TabsPrimitive from '@radix-ui/react-tabs'
 
 import { cn } from '@/lib/utils'
-import { useSetting } from '@/app/setting-context'
-import { useEffect, useState } from 'react'
 
 const Tabs = TabsPrimitive.Root
 

@@ -15,9 +15,18 @@ import { Button } from '@/components/ui/button'
 import { useSetting } from '@/app/setting-context'
 import CheckIcon from './icons/check-icon'
 import NumberInput from './number-input'
+import { useEffect, useState } from 'react'
 
 export default function Setting() {
-	const { font, setFont, color, setColor, times, setTimes } = useSetting()
+	const { font, setFont, times, setTimes } = useSetting()
+	const [color, setColor] = useState('red')
+
+	useEffect(() => {
+		document.documentElement.style.setProperty(
+			'--selected-color',
+			color === 'red' ? '#F87070' : color === 'cyan' ? '#70F3F8' : '#D881F8',
+		)
+	}, [color])
 
 	return (
 		<Dialog>
