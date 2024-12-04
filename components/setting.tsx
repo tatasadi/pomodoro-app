@@ -42,11 +42,17 @@ export default function Setting() {
 						<div>
 							<h3>TIME (MINUTES)</h3>
 							<div className="grid gap-2 mt-5 sm:grid-cols-3 sm:gap-5">
-								<NumberInput label="pomodoro" name="pomodoro" defaultValue={times.pomodoro} />
+								<NumberInput
+									label="pomodoro"
+									name="pomodoro"
+									defaultValue={times.pomodoro}
+									handleUpdate={newValue => setTimes(t => ({ ...t, pomodoro: newValue }))}
+								/>
 								<NumberInput
 									label="short break"
 									name="shortBreak"
 									defaultValue={times.shortBreak}
+									handleUpdate={newValue => setTimes(t => ({ ...t, shortBreak: newValue }))}
 								/>
 								<NumberInput
 									label="long break"
