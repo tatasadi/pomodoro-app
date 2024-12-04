@@ -1,12 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Button } from './ui/button'
 import useSound from 'use-sound'
+import { cn } from '@/lib/utils'
+import { useSetting } from '@/app/setting-context'
 
 interface TimerProps {
 	time: number // Time in seconds
 }
 
 const Timer: React.FC<TimerProps> = ({ time }) => {
+	const { font } = useSetting()
 	const [play] = useSound('/timer.mp3')
 	const [remainingTime, setRemainingTime] = useState(time)
 	const [isRunning, setIsRunning] = useState(false)
@@ -65,7 +68,12 @@ const Timer: React.FC<TimerProps> = ({ time }) => {
 				>
 					{/* Timer Text */}
 					<div className="text-center">
-						<div className="text-[5rem] sm:text-[6.25rem] font-bold tracking-[-0.25rem] sm:tracking-[-0.3125rem]">
+						<div
+							className={cn(
+								'text-[5rem] sm:text-[6.25rem] tracking-[-0.25rem] sm:tracking-[-0.3125rem]',
+								font === 'spaceMono' ? 'font-medium' : 'font-bold',
+							)}
+						>
 							{formatTime(remainingTime)}
 						</div>
 						<div className="text-sm md:text-base uppercase mt-3 tracking-[0.82031rem] sm:mt-5 sm:tracking-[0.9375rem]">

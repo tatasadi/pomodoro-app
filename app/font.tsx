@@ -13,5 +13,5 @@ export const robotoSlab = Roboto_Slab({
 export const spaceMono = Space_Mono({
 	subsets: ['latin'],
 	display: 'swap',
-	weight: ['700'],
+	weight: ['400', '700'],
 })
