@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { Button } from './ui/button'
 import useSound from 'use-sound'
 import { cn } from '@/lib/utils'
@@ -15,16 +15,16 @@ const Timer: React.FC<TimerProps> = ({ time }) => {
 	const [isRunning, setIsRunning] = useState(false)
 	const timerRef = useRef<NodeJS.Timeout | null>(null)
 
-	const progress = ((time - remainingTime) / time) * 100
+	//const progress = ((time - remainingTime) / time) * 100
 
 	const handleToggle = () => {
 		setIsRunning(!isRunning)
 	}
 
-	const handleReset = () => {
+	const handleReset = useCallback(() => {
 		setIsRunning(false)
 		setRemainingTime(time)
-	}
+	}, [time])
 
 	useEffect(() => {
 		setRemainingTime(time)
@@ -50,7 +50,7 @@ const Timer: React.FC<TimerProps> = ({ time }) => {
 		return () => {
 			if (timerRef.current) clearInterval(timerRef.current)
 		}
-	}, [isRunning, play, remainingTime, time])
+	}, [handleReset, isRunning, play, remainingTime, time])
 
 	// Format time into MM:SS
 	const formatTime = (seconds: number) => {
