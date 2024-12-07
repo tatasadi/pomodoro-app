@@ -3,6 +3,7 @@ import { Button } from './ui/button'
 import useSound from 'use-sound'
 import { cn } from '@/lib/utils'
 import { useSetting } from '@/app/setting-context'
+import Progress from './progress'
 
 interface TimerProps {
 	time: number // Time in seconds
@@ -64,8 +65,9 @@ const Timer: React.FC<TimerProps> = ({ time }) => {
 			<div className="bg-[linear-gradient(315deg,#2E325A_0%,#0E112A_100%)] rounded-full p-4 shadow-[-50px_-50px_100px_0px_#272C5A,50px_50px_100px_0px_#121530]">
 				<div
 					onClick={handleToggle}
-					className="relative size-[16.73781rem] sm:size-[22.875rem] flex items-center justify-center rounded-full bg-dark text-light-gray cursor-pointer"
+					className="grid *:col-start-1 *:row-start-1 size-[16.73781rem] sm:size-[22.875rem] items-center justify-center rounded-full bg-dark text-light-gray cursor-pointer"
 				>
+					<Progress className="" />
 					{/* Timer Text */}
 					<div className="text-center">
 						<div
