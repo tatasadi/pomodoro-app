@@ -1,8 +1,7 @@
 import React from 'react'
 
 interface ProgressCircleProps {
-	progress: number // Progress in percentage (0-100)
-	size?: number // Diameter of the circle in pixels
+	progress: number
 }
 
 const ProgressCircle: React.FC<ProgressCircleProps> = ({ progress }) => {
@@ -13,7 +12,6 @@ const ProgressCircle: React.FC<ProgressCircleProps> = ({ progress }) => {
 				background: `conic-gradient(var(--selected-color) ${progress * 3.6}deg, #161932 0deg)`,
 			}}
 		>
-			{/* Inner Circle for Track */}
 			<div className="absolute rounded-full bg-dark size-[15.25rem] sm:size-[20rem]"></div>
 		</div>
 	)
