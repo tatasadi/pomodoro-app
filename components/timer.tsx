@@ -3,7 +3,7 @@ import { Button } from './ui/button'
 import useSound from 'use-sound'
 import { cn } from '@/lib/utils'
 import { useSetting } from '@/app/setting-context'
-import Progress from './progress'
+import ProgressCircle from './progress-circle'
 
 interface TimerProps {
 	time: number // Time in seconds
@@ -16,7 +16,7 @@ const Timer: React.FC<TimerProps> = ({ time }) => {
 	const [isRunning, setIsRunning] = useState(false)
 	const timerRef = useRef<NodeJS.Timeout | null>(null)
 
-	//const progress = ((time - remainingTime) / time) * 100
+	const progress = ((time - remainingTime) / time) * 100
 
 	const handleToggle = () => {
 		setIsRunning(!isRunning)
@@ -67,9 +67,9 @@ const Timer: React.FC<TimerProps> = ({ time }) => {
 					onClick={handleToggle}
 					className="grid *:col-start-1 *:row-start-1 size-[16.73781rem] sm:size-[22.875rem] items-center justify-center rounded-full bg-dark text-light-gray cursor-pointer"
 				>
-					<Progress className="" />
+					<ProgressCircle progress={progress} />
 					{/* Timer Text */}
-					<div className="text-center">
+					<div className="text-center z-10">
 						<div
 							className={cn(
 								'text-[5rem] sm:text-[6.25rem] tracking-[-0.25rem] sm:tracking-[-0.3125rem]',
