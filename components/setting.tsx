@@ -15,11 +15,10 @@ import { Button } from '@/components/ui/button'
 import { useSetting } from '@/app/setting-context'
 import CheckIcon from './icons/check-icon'
 import NumberInput from './number-input'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 export default function Setting() {
-	const { font, setFont, times, setTimes } = useSetting()
-	const [color, setColor] = useState('red')
+	const { font, setFont, times, setTimes, color, setColor } = useSetting()
 
 	useEffect(() => {
 		document.documentElement.style.setProperty(
