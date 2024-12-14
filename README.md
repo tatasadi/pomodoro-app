@@ -2,7 +2,8 @@
 
 A productivity-focused application built with Next.js, React, and TypeScript to help users implement
 the Pomodoro Technique. Customize your timer settings, track work intervals, and stay on task with a
-clean and responsive interface.
+clean and responsive interface. The app saves your preferences (font, color, and timer settings)
+locally, ensuring a seamless experience across sessions.
 
 ## Table of Contents
 
@@ -25,13 +26,15 @@ clean and responsive interface.
   preferences.
 - **Dynamic Progress Bar**: Real-time circular progress bar that visually tracks the elapsed and
   remaining time.
-- **Responsive Design**: Optimized for mobile and desktop screens, ensuring usability across
-  devices.
+- **Local Storage Persistence**: Saves your font, color, and timer settings locally using a custom
+  `useLocalStorage` hook, so your preferences are retained across sessions.
+- **Responsive Design**: Fully optimized for mobile and desktop screens.
 
 ## Tech Stack
 
 - **Frontend**: React, TypeScript, Next.js, Tailwind CSS
-- **State Management**: React useState
+- **State Management**: React useState, useContext
+- **Local Storage**: Custom `useLocalStorage` hook
 - **Deployment**: Vercel
 
 ## Installation
@@ -68,9 +71,8 @@ supports Next.js.
 
 ## Screenshots
 
-![](./preview-1.png)  
-![](./preview-2.png)  
-![](./preview-3.png)
+![](./screenshot1.png)  
+![](./screenshot2.png)
 
 ## Links
 
@@ -88,6 +90,7 @@ supports Next.js.
 ![](https://img.shields.io/badge/React-fff?style=for-the-badge&logo=React&logoColor=000&color=5ed3f3)
 ![](https://img.shields.io/badge/Next.js-fff?style=for-the-badge&logo=next.js&logoColor=fff&color=000)
 ![](https://img.shields.io/badge/tailwindcss-fff?style=for-the-badge&logo=tailwindcss&logoColor=fff&color=15b8c5)
+![](https://img.shields.io/badge/Local_Storage-fff?style=for-the-badge&logo=databricks&logoColor=fff&color=0078d7)
 
 ### Code Quality with
 
@@ -97,7 +100,7 @@ supports Next.js.
 ## Author
 
 - Website - [Ehsan Tatasadi](https://ehsan.tatasadi.com)
-- Frontend Mentor - [@tatasadi](https://www.frontendmentor.io/profile/tatasadi)
-- GitHub - [@tatasadi](https://github.com/tatasadi)
 - Linkedin - [Ehsan Tatasadi](https://www.linkedin.com/in/ehsan-tatasadi-2161a433)
+- GitHub - [@tatasadi](https://github.com/tatasadi)
+- Frontend Mentor - [@tatasadi](https://www.frontendmentor.io/profile/tatasadi)
 - Twitter - [@etatasadi](https://twitter.com/etatasadi)
